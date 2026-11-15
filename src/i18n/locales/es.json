@@ -77,35 +77,40 @@
     "title": "Acerca del proyecto",
     "whatIs": {
       "title": "¿Qué es FireWatch?",
-      "body": "FireWatch es una herramienta interactiva para explorar la actividad histórica de puntos calientes en México, desde 2000 hasta hoy, con datos armonizados de MODIS y VIIRS."
+      "body": "FireWatch es una herramienta interactiva para explorar la actividad histórica de quemas e incendios, de 2000 a 2025, con datos satelitales de NASA FIRMS armonizados para que los años se puedan comparar entre sí, sin importar qué sensor los detectó.\n\nPuedes ver el mapa de cada año, seleccionar un área y obtener sus indicadores, su calendario histórico y su tendencia anual, comparar dos años en la misma área y descargar los datos en CSV o un reporte en PDF.\n\nEl reto de NASA es global. Esta primera versión cubre México, porque el volumen de datos es muy grande (más de 8 millones de detecciones solo para el país). El método de armonización y la aplicación no dependen del país, así que se pueden ampliar a otras regiones."
     },
     "sensors": {
       "title": "MODIS y VIIRS",
-      "body": "MODIS (desde 2000) y VIIRS (desde 2012) son sensores satelitales que detectan anomalías térmicas en la superficie terrestre."
+      "body": "MODIS viaja en dos satélites de la NASA: Terra (desde noviembre de 2000) y Aqua (desde julio de 2002). Detecta fuego con píxeles de aproximadamente 1 km.\n\nVIIRS viaja en Suomi NPP (desde enero de 2012) y NOAA-20 (desde abril de 2018). Sus píxeles son de 375 m, así que detecta fuegos más pequeños que MODIS.\n\nEntre todos, cada punto de México se observa varias veces al día."
     },
     "hotspots": {
       "title": "¿Qué es un punto caliente?",
-      "body": "Un punto caliente es un lugar donde un satélite detectó una temperatura anormalmente alta, normalmente asociada a un incendio activo."
+      "body": "Un punto caliente es un píxel donde un satélite detectó una temperatura anormalmente alta. Casi siempre es fuego en vegetación: incendios forestales, quemas agrícolas o de pastizal.\n\nNo todos los puntos calientes son incendios. Antes de analizarlos se eliminaron los volcanes activos, las fuentes industriales (refinerías, quemadores de gas, plantas) y las plataformas marinas."
     },
     "dataFlow": {
       "title": "Flujo de datos",
-      "body": "TODO: describir cómo viajan los datos desde NASA FIRMS al backend y a esta aplicación."
+      "body": "1. Descarga: los archivos históricos de MODIS y VIIRS para México se obtienen de NASA FIRMS (más de 8 millones de detecciones).\n\n2. Limpieza: se eliminan duplicados, detecciones fuera de México, volcanes, fuentes industriales y plataformas marinas.\n\n3. Armonización: las detecciones se agrupan en cuadritos de 1 km por día, para que los distintos satélites se puedan comparar.\n\n4. API: un servidor (FastAPI) calcula indicadores, calendario, tendencia, comparaciones y zonas recurrentes para el área y el año que elijas.\n\n5. Esta aplicación: muestra los resultados en el mapa, las tarjetas y las gráficas, y genera el CSV y el PDF."
     },
     "methodology": {
       "title": "Metodología de armonización",
-      "body": "TODO: describir cómo se hacen comparables las detecciones de MODIS y VIIRS."
+      "body": "Contar puntos de satélite no sirve para comparar años: un mismo incendio genera más puntos cuando hay más satélites mirando. Por eso FireWatch mide la actividad de fuego: el número de cuadritos de 1 km que tuvieron fuego en cada día. Un cuadrito con fuego en un día cuenta 1, sin importar cuántos satélites lo vieron.\n\nPara 2012-2025 la actividad combina MODIS y VIIRS (Suomi NPP). Para 2000-2011, cuando todavía no existía VIIRS, se calcula a partir de MODIS con un factor de calibración obtenido de los años en que ambos sensores coinciden.\n\nUna zona de incendios recurrentes es un área de unos 5.6 km donde hubo fuego (al menos 5 días-celda) en 15 o más de los 25 años de 2001 a 2025."
     },
     "limitations": {
       "title": "Limitaciones y alcances",
-      "body": "TODO: describir limitaciones conocidas (nubosidad, resolución, horarios de paso, etc.)."
+      "body": "Alcance geográfico: por ahora la aplicación solo cubre México. Áreas fuera del país no tienen datos.\n\nLas nubes y el humo denso pueden ocultar fuegos, y los satélites pasan a ciertas horas, así que un fuego corto puede no detectarse.\n\n2000 es un año parcial (solo noviembre y diciembre). Los años 2000-2011 dependen de la calibración, que es menos precisa en áreas pequeñas con pocos datos; la aplicación lo avisa cuando hay pocas detecciones.\n\nNo se distingue un incendio forestal de una quema agrícola, y una detección indica calor, no la superficie quemada. Aunque se filtraron las fuentes industriales conocidas, pueden quedar algunas pequeñas. Las fechas están en hora UTC."
     },
     "usefulness": {
       "title": "¿Cómo te puede ayudar?",
-      "body": "TODO: describir la utilidad para el usuario final."
+      "body": "Brigadas y protección civil: identificar zonas de incendios recurrentes y los meses más críticos para planear la prevención.\n\nAdministradores de áreas naturales y ejidos: ver cómo ha evolucionado el fuego en su territorio y comparar un año con otro.\n\nInvestigadores y analistas: usar una serie histórica armonizada de 25 años y descargar los datos en CSV.\n\nCiudadanía y medios: saber si un año fue peor o mejor de lo normal en su región, con un reporte en PDF fácil de compartir."
     },
     "acknowledgement": {
       "title": "Reconocimiento",
       "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
+    },
+    "team": {
+      "title": "Equipo",
+      "body": "FireWatch es un proyecto desarrollado para el NASA Space Apps Challenge 2026, en el reto \"Harmonization of MODIS and VIIRS Hot Spots\".",
+      "repos": "Código fuente"
     }
   },
   "errors": {

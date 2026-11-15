@@ -77,35 +77,40 @@
     "title": "About the project",
     "whatIs": {
       "title": "What is FireWatch?",
-      "body": "FireWatch is an interactive tool to explore historical wildfire hotspot activity in Mexico, from 2000 to today, using harmonized MODIS and VIIRS data."
+      "body": "FireWatch is an interactive tool to explore historical burning activity from 2000 to 2025, using NASA FIRMS satellite data harmonized so that years can be compared with each other, no matter which sensor detected them.\n\nYou can see the map for each year, select an area to get its indicators, historical calendar and annual trend, compare two years in the same area, and download the data as CSV or a PDF report.\n\nThe NASA challenge is global. This first version covers Mexico, because the data volume is very large (more than 8 million detections for the country alone). The harmonization method and the application do not depend on the country, so they can be extended to other regions."
     },
     "sensors": {
       "title": "MODIS and VIIRS",
-      "body": "MODIS (since 2000) and VIIRS (since 2012) are satellite sensors that detect thermal anomalies on the Earth's surface."
+      "body": "MODIS flies on two NASA satellites: Terra (since November 2000) and Aqua (since July 2002). It detects fire with pixels of about 1 km.\n\nVIIRS flies on Suomi NPP (since January 2012) and NOAA-20 (since April 2018). Its pixels are 375 m, so it detects smaller fires than MODIS.\n\nTogether, every point in Mexico is observed several times a day."
     },
     "hotspots": {
       "title": "What is a hotspot?",
-      "body": "A hotspot is a location where a satellite detected abnormally high temperature, usually associated with an active fire."
+      "body": "A hotspot is a pixel where a satellite detected an abnormally high temperature. It is almost always fire in vegetation: wildfires, agricultural or grassland burning.\n\nNot every hotspot is a wildfire. Before the analysis, active volcanoes, industrial sources (refineries, gas flares, plants) and offshore platforms were removed."
     },
     "dataFlow": {
       "title": "Data flow",
-      "body": "TODO: describe how data travels from NASA FIRMS to the backend and to this application."
+      "body": "1. Download: historical MODIS and VIIRS files for Mexico are obtained from NASA FIRMS (more than 8 million detections).\n\n2. Cleaning: duplicates, detections outside Mexico, volcanoes, industrial sources and offshore platforms are removed.\n\n3. Harmonization: detections are grouped into 1 km squares per day so that different satellites can be compared.\n\n4. API: a server (FastAPI) computes indicators, calendar, trend, comparisons and recurrent zones for the area and year you choose.\n\n5. This application: shows the results on the map, cards and charts, and generates the CSV and PDF."
     },
     "methodology": {
       "title": "Harmonization methodology",
-      "body": "TODO: describe how MODIS and VIIRS detections are made comparable."
+      "body": "Counting satellite points does not work for comparing years: the same fire produces more points when more satellites are watching. That is why FireWatch measures fire activity: the number of 1 km squares with fire on each day. A square with fire on a given day counts once, no matter how many satellites saw it.\n\nFor 2012-2025, activity combines MODIS and VIIRS (Suomi NPP). For 2000-2011, before VIIRS existed, it is estimated from MODIS with a calibration factor obtained from the years when both sensors overlap.\n\nA recurrent wildfire zone is an area of about 5.6 km with fire (at least 5 cell-days) in 15 or more of the 25 years from 2001 to 2025."
     },
     "limitations": {
       "title": "Limitations and scope",
-      "body": "TODO: describe known limitations (cloud cover, resolution, overpass times, etc.)."
+      "body": "Geographic scope: for now the application only covers Mexico. Areas outside the country have no data.\n\nClouds and dense smoke can hide fires, and satellites pass at certain times of day, so a short fire may go undetected.\n\n2000 is a partial year (November and December only). Years 2000-2011 depend on the calibration, which is less precise in small areas with little data; the application warns you when there are few detections.\n\nWildfires and agricultural burning are not distinguished, and a detection indicates heat, not burned area. Although known industrial sources were filtered out, some small ones may remain. Dates are in UTC."
     },
     "usefulness": {
       "title": "How can it help you?",
-      "body": "TODO: describe the value for end users."
+      "body": "Fire brigades and civil protection: identify recurrent wildfire zones and the most critical months to plan prevention.\n\nProtected area and land managers: see how fire has evolved in their territory and compare one year with another.\n\nResearchers and analysts: use a harmonized 25-year historical series and download the data as CSV.\n\nCitizens and media: find out whether a year was better or worse than usual in their region, with an easy-to-share PDF report."
     },
     "acknowledgement": {
       "title": "Acknowledgement",
       "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
+    },
+    "team": {
+      "title": "Team",
+      "body": "FireWatch is a project developed for the NASA Space Apps Challenge 2026, in the \"Harmonization of MODIS and VIIRS Hot Spots\" challenge.",
+      "repos": "Source code"
     }
   },
   "errors": {
