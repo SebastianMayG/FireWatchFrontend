@@ -1,0 +1,78 @@
+{
+  "app": { "name": "FireWatch" },
+  "header": {
+    "dashboard": "Dashboard",
+    "about": "About the project",
+    "back": "Back",
+    "darkMode": "Toggle dark mode",
+    "language": "Language"
+  },
+  "map": {
+    "recurrentZone": "This is a recurrent wildfire hotspot zone",
+    "year": "Year",
+    "compare": "Compare",
+    "exitCompare": "Back to dashboard",
+    "csv": "CSV",
+    "pdf": "PDF",
+    "selectArea": "Select area",
+    "selectAreaHint": "Click and drag on the map to select an area (Esc to cancel)",
+    "cancelSelection": "Cancel",
+    "clearSelection": "Clear selected area",
+    "mainPeriod": "Main period",
+    "comparePeriod": "Comparison period"
+  },
+  "indicators": {
+    "hotspots": "Hotspots detected",
+    "peakYear": "Year with highest activity",
+    "peakMonths": "Months with highest activity",
+    "vsMedian": "Change vs. historical median",
+    "vsOther": "Change vs. other period",
+    "yearsAnalyzed": "Years analyzed"
+  },
+  "charts": {
+    "calendar": "Historical calendar",
+    "calendarHint": "Monthly activity for every available year. The selected year is highlighted.",
+    "trend": "Annual trend",
+    "trendHint": "Yearly evolution, intensity comparison and historical peaks.",
+    "emptyArea": "Select an area on the map to see this analysis.",
+    "pending": "The analysis for the selected area will appear here."
+  },
+  "common": {
+    "noData": "—"
+  },
+  "about": {
+    "title": "About the project",
+    "whatIs": {
+      "title": "What is FireWatch?",
+      "body": "FireWatch is an interactive tool to explore historical wildfire hotspot activity in Mexico, from 2000 to today, using harmonized MODIS and VIIRS data."
+    },
+    "sensors": {
+      "title": "MODIS and VIIRS",
+      "body": "MODIS (since 2000) and VIIRS (since 2012) are satellite sensors that detect thermal anomalies on the Earth's surface."
+    },
+    "hotspots": {
+      "title": "What is a hotspot?",
+      "body": "A hotspot is a location where a satellite detected abnormally high temperature, usually associated with an active fire."
+    },
+    "dataFlow": {
+      "title": "Data flow",
+      "body": "TODO: describe how data travels from NASA FIRMS to the backend and to this application."
+    },
+    "methodology": {
+      "title": "Harmonization methodology",
+      "body": "TODO: describe how MODIS and VIIRS detections are made comparable."
+    },
+    "limitations": {
+      "title": "Limitations and scope",
+      "body": "TODO: describe known limitations (cloud cover, resolution, overpass times, etc.)."
+    },
+    "usefulness": {
+      "title": "How can it help you?",
+      "body": "TODO: describe the value for end users."
+    },
+    "acknowledgement": {
+      "title": "Acknowledgement",
+      "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
+    }
+  }
+}

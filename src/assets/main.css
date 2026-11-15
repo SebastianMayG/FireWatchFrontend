@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "tailwindcss-primeui";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+/* El modo oscuro se activa con la clase .app-dark en <html> */
+@custom-variant dark (&:where(.app-dark, .app-dark *));

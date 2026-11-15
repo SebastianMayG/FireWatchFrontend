@@ -1,0 +1,78 @@
+{
+  "app": { "name": "FireWatch" },
+  "header": {
+    "dashboard": "Panel",
+    "about": "Acerca del proyecto",
+    "back": "Volver",
+    "darkMode": "Cambiar modo nocturno",
+    "language": "Idioma"
+  },
+  "map": {
+    "recurrentZone": "Esta es una zona de incendios recurrentes",
+    "year": "Año",
+    "compare": "Comparar",
+    "exitCompare": "Volver al panel",
+    "csv": "CSV",
+    "pdf": "PDF",
+    "selectArea": "Seleccionar área",
+    "selectAreaHint": "Haz clic y arrastra sobre el mapa para seleccionar un área (Esc para cancelar)",
+    "cancelSelection": "Cancelar",
+    "clearSelection": "Borrar área seleccionada",
+    "mainPeriod": "Periodo principal",
+    "comparePeriod": "Periodo a comparar"
+  },
+  "indicators": {
+    "hotspots": "Puntos calientes detectados",
+    "peakYear": "Año con mayor actividad",
+    "peakMonths": "Meses con mayor actividad",
+    "vsMedian": "Cambio vs. mediana histórica",
+    "vsOther": "Cambio vs. el otro periodo",
+    "yearsAnalyzed": "Años analizados"
+  },
+  "charts": {
+    "calendar": "Calendario histórico",
+    "calendarHint": "Actividad mensual de todos los años disponibles. El año seleccionado aparece resaltado.",
+    "trend": "Tendencia anual",
+    "trendHint": "Evolución por año, comparación de intensidad y picos históricos.",
+    "emptyArea": "Selecciona un área en el mapa para ver este análisis.",
+    "pending": "Aquí aparecerá el análisis del área seleccionada."
+  },
+  "common": {
+    "noData": "—"
+  },
+  "about": {
+    "title": "Acerca del proyecto",
+    "whatIs": {
+      "title": "¿Qué es FireWatch?",
+      "body": "FireWatch es una herramienta interactiva para explorar la actividad histórica de puntos calientes en México, desde 2000 hasta hoy, con datos armonizados de MODIS y VIIRS."
+    },
+    "sensors": {
+      "title": "MODIS y VIIRS",
+      "body": "MODIS (desde 2000) y VIIRS (desde 2012) son sensores satelitales que detectan anomalías térmicas en la superficie terrestre."
+    },
+    "hotspots": {
+      "title": "¿Qué es un punto caliente?",
+      "body": "Un punto caliente es un lugar donde un satélite detectó una temperatura anormalmente alta, normalmente asociada a un incendio activo."
+    },
+    "dataFlow": {
+      "title": "Flujo de datos",
+      "body": "TODO: describir cómo viajan los datos desde NASA FIRMS al backend y a esta aplicación."
+    },
+    "methodology": {
+      "title": "Metodología de armonización",
+      "body": "TODO: describir cómo se hacen comparables las detecciones de MODIS y VIIRS."
+    },
+    "limitations": {
+      "title": "Limitaciones y alcances",
+      "body": "TODO: describir limitaciones conocidas (nubosidad, resolución, horarios de paso, etc.)."
+    },
+    "usefulness": {
+      "title": "¿Cómo te puede ayudar?",
+      "body": "TODO: describir la utilidad para el usuario final."
+    },
+    "acknowledgement": {
+      "title": "Reconocimiento",
+      "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
+    }
+  }
+}
