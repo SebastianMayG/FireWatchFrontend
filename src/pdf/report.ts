@@ -289,7 +289,8 @@ export async function downloadAreaReport(args: {
   r.keyValues([
     [t('pdf.region'), formatBBox(bbox, t)],
     [t('pdf.period'), String(year)],
-    [t('indicators.hotspots'), number.format(d.detections)],
+    [t('indicators.hotspots'), number.format(d.activity)],
+    [t('pdf.satellitePoints'), number.format(d.detections)],
     [t('indicators.peakYear'), d.peak_year ? String(d.peak_year) : '-'],
     [t('indicators.peakMonths'), topMonths(d, locale)],
     [
@@ -370,7 +371,8 @@ export async function downloadCompareReport(args: {
   r.compareTable(
     ['', String(a.year), String(b.year)],
     [
-      [t('indicators.hotspots'), number.format(a.detections), number.format(b.detections)],
+      [t('indicators.hotspots'), number.format(a.activity), number.format(b.activity)],
+      [t('pdf.satellitePoints'), number.format(a.detections), number.format(b.detections)],
       [t('indicators.peakMonths'), topMonths(a, locale), topMonths(b, locale)],
       [
         t('indicators.vsMedianPeriod', { ...median }),

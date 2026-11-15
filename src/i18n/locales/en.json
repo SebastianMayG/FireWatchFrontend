@@ -23,7 +23,7 @@
     "mainPeriod": "Main period",
     "comparePeriod": "Comparison period",
     "loadingHotspots": "Loading hotspots...",
-    "detectionsInView": "{n} detections in view",
+    "detectionsInView": "{n} satellite points in view",
     "recurrentZoneYears": "Fire activity in {n} of {total} years",
     "legend": {
       "recurrent": "Recurrent zone",
@@ -33,23 +33,23 @@
     "needArea": "Select an area on the map first"
   },
   "indicators": {
-    "hotspots": "Hotspots detected",
+    "hotspots": "Fire activity",
     "peakYear": "Year with highest activity",
     "peakMonths": "Months with highest activity",
     "vsMedian": "Change vs. historical median",
     "vsOther": "Change vs. other period",
     "yearsAnalyzed": "Years analyzed",
     "partialNote": "Partial year: records start in November 2000.",
-    "activityHint": "Harmonized activity: {value}",
     "vsMedianPeriod": "Change vs. median {from}-{to}",
     "vsOtherYear": "Change vs. {year}",
     "peakYearOfTwo": "Year with highest activity (of the two)",
     "detailVs": "{value} vs. {ref}",
-    "activityUnit": "Harmonized activity: fire cell-days on a 1 km grid, comparable across years.",
+    "activityUnit": "Fire activity: number of 1 km squares with fire on each day. A fire seen by several satellites counts once, so it is comparable across years.",
     "scope": "Data for: {area}",
     "scopeArea": "selected area",
     "scopeMexico": "all of Mexico (select an area on the map to narrow it down)",
-    "lowData": "Few detections in this area (fewer than {n} in at least one of the years): treat this comparison with caution."
+    "lowData": "Few detections in this area (fewer than {n} in at least one of the years): treat this comparison with caution.",
+    "satellitePoints": "Satellite points: {n}"
   },
   "charts": {
     "calendar": "Historical calendar",
@@ -59,7 +59,7 @@
     "emptyArea": "Select an area on the map to see this analysis.",
     "pending": "The analysis for the selected area will appear here.",
     "activity": "Harmonized activity",
-    "detections": "Raw detections",
+    "detections": "Satellite points",
     "median": "Historical median",
     "selected": "Selected year",
     "peak": "Peak",
@@ -128,13 +128,13 @@
     "interpretation": "Interpretation",
     "comparison": "Comparison",
     "methodology": "Methodology",
-    "methodologyText": "Fire activity is measured as fire cell-days on a 1 km grid, combining MODIS and VIIRS S-NPP detections from NASA FIRMS. Years 2000-2011 are harmonized by calibration from MODIS because VIIRS did not exist yet. \"Hotspots detected\" are raw detections from all sensors. Recurrent zones are ~5.6 km areas with fire in at least 15 of the 25 years 2001-2025.",
+    "methodologyText": "Fire activity counts the 1 km squares with fire on each day, combining MODIS and VIIRS S-NPP detections from NASA FIRMS: a fire seen by several satellites counts once, so years are comparable. Years 2000-2011 are harmonized by calibration from MODIS because VIIRS did not exist yet. \"Satellite points\" are the raw marks made by all satellites. Recurrent zones are ~5.6 km areas with fire in at least 15 of the 25 years 2001-2025.",
     "legendNote": "Map legend: blue rectangle = analyzed area; purple = recurrent wildfire zones; yellow to red = hotspots (color and size = fire intensity).",
     "attribution": "Data source",
     "page": "Page {n} of {total}",
     "interp": {
       "noActivity": "No fire activity was recorded in the selected area in {year}.",
-      "detections": "In {year}, the selected area recorded {n} hotspot detections.",
+      "detections": "In {year}, the selected area recorded a fire activity of {n} (1 km squares with fire per day), based on {points} satellite points.",
       "above": "Its fire activity was {pct}% higher than the historical median ({from}-{to}).",
       "below": "Its fire activity was {pct}% lower than the historical median ({from}-{to}).",
       "near": "Its fire activity was close to the historical median ({from}-{to}).",
@@ -154,6 +154,7 @@
       "cmpMonthsSame": "In both years the most critical month was {month}.",
       "cmpMonthsDiff": "The most critical month was {a} in {yearA} and {b} in {yearB}."
     },
-    "westAbbr": "W"
+    "westAbbr": "W",
+    "satellitePoints": "Satellite points"
   }
 }

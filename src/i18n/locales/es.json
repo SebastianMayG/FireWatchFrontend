@@ -23,7 +23,7 @@
     "mainPeriod": "Periodo principal",
     "comparePeriod": "Periodo a comparar",
     "loadingHotspots": "Cargando puntos calientes...",
-    "detectionsInView": "{n} detecciones en la vista",
+    "detectionsInView": "{n} puntos de satélite en la vista",
     "recurrentZoneYears": "Actividad de fuego en {n} de {total} años",
     "legend": {
       "recurrent": "Zona recurrente",
@@ -33,23 +33,23 @@
     "needArea": "Primero selecciona un área en el mapa"
   },
   "indicators": {
-    "hotspots": "Puntos calientes detectados",
+    "hotspots": "Actividad de fuego",
     "peakYear": "Año con mayor actividad",
     "peakMonths": "Meses con mayor actividad",
     "vsMedian": "Cambio vs. mediana histórica",
     "vsOther": "Cambio vs. el otro periodo",
     "yearsAnalyzed": "Años analizados",
     "partialNote": "Año parcial: los registros empiezan en noviembre de 2000.",
-    "activityHint": "Actividad armonizada: {value}",
     "vsMedianPeriod": "Cambio vs. mediana {from}-{to}",
     "vsOtherYear": "Cambio vs. {year}",
     "peakYearOfTwo": "Año con mayor actividad (de los dos)",
     "detailVs": "{value} vs. {ref}",
-    "activityUnit": "Actividad armonizada: días-celda con fuego en una rejilla de 1 km, comparable entre años.",
+    "activityUnit": "Actividad de fuego: número de cuadritos de 1 km con fuego en cada día. Un fuego que ven varios satélites cuenta una sola vez, por eso es comparable entre años.",
     "scope": "Datos de: {area}",
     "scopeArea": "área seleccionada",
     "scopeMexico": "todo México (selecciona un área en el mapa para acotarlo)",
-    "lowData": "Hay pocas detecciones en esta área (menos de {n} en al menos uno de los años): toma esta comparación con cautela."
+    "lowData": "Hay pocas detecciones en esta área (menos de {n} en al menos uno de los años): toma esta comparación con cautela.",
+    "satellitePoints": "Puntos de satélite: {n}"
   },
   "charts": {
     "calendar": "Calendario histórico",
@@ -59,7 +59,7 @@
     "emptyArea": "Selecciona un área en el mapa para ver este análisis.",
     "pending": "Aquí aparecerá el análisis del área seleccionada.",
     "activity": "Actividad armonizada",
-    "detections": "Detecciones crudas",
+    "detections": "Puntos de satélite",
     "median": "Mediana histórica",
     "selected": "Año seleccionado",
     "peak": "Pico",
@@ -128,13 +128,13 @@
     "interpretation": "Interpretación",
     "comparison": "Comparación",
     "methodology": "Metodología",
-    "methodologyText": "La actividad de fuego se mide en días-celda con fuego en una rejilla de 1 km, combinando las detecciones de MODIS y VIIRS S-NPP de NASA FIRMS. Los años 2000-2011 se armonizan por calibración a partir de MODIS, porque VIIRS aún no existía. Los \"puntos calientes detectados\" son las detecciones crudas de todos los sensores. Las zonas recurrentes son áreas de ~5.6 km con fuego en al menos 15 de los 25 años 2001-2025.",
+    "methodologyText": "La actividad de fuego cuenta los cuadritos de 1 km con fuego en cada día, combinando las detecciones de MODIS y VIIRS S-NPP de NASA FIRMS: un fuego que ven varios satélites cuenta una sola vez, por eso los años son comparables. Los años 2000-2011 se armonizan por calibración a partir de MODIS, porque VIIRS aún no existía. Los \"puntos de satélite\" son las marcas crudas de todos los satélites. Las zonas recurrentes son áreas de ~5.6 km con fuego en al menos 15 de los 25 años 2001-2025.",
     "legendNote": "Leyenda del mapa: rectángulo azul = área analizada; morado = zonas de incendios recurrentes; amarillo a rojo = puntos calientes (color y tamaño = intensidad del fuego).",
     "attribution": "Fuente de datos",
     "page": "Página {n} de {total}",
     "interp": {
       "noActivity": "No se registró actividad de fuego en el área seleccionada en {year}.",
-      "detections": "En {year}, el área seleccionada registró {n} detecciones de puntos calientes.",
+      "detections": "En {year}, el área seleccionada registró una actividad de fuego de {n} (cuadritos de 1 km con fuego por día), a partir de {points} puntos de satélite.",
       "above": "Su actividad de fuego fue {pct}% mayor que la mediana histórica ({from}-{to}).",
       "below": "Su actividad de fuego fue {pct}% menor que la mediana histórica ({from}-{to}).",
       "near": "Su actividad de fuego fue similar a la mediana histórica ({from}-{to}).",
@@ -154,6 +154,7 @@
       "cmpMonthsSame": "En ambos años el mes más crítico fue {month}.",
       "cmpMonthsDiff": "El mes más crítico fue {a} en {yearA} y {b} en {yearB}."
     },
-    "westAbbr": "O"
+    "westAbbr": "O",
+    "satellitePoints": "Puntos de satélite"
   }
 }

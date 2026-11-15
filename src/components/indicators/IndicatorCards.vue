@@ -160,10 +160,13 @@ const items = computed<Item[]>(() => {
       key: 'hotspots',
       label: t('indicators.hotspots'),
       icon: 'pi-map-marker',
-      value: d ? number.value.format(d.detections) : noData.value,
-      title: d
-        ? t('indicators.activityHint', { value: number.value.format(d.activity) })
+      // Actividad de fuego (cuadritos de 1 km con fuego por día): es lo que suma el calendario.
+      // Los puntos de satélite van como dato secundario porque dependen de cuántos satélites había.
+      value: d ? number.value.format(d.activity) : noData.value,
+      detail: d
+        ? t('indicators.satellitePoints', { n: number.value.format(d.detections) })
         : undefined,
+      title: t('indicators.activityUnit'),
     },
     {
       key: 'peakYear',

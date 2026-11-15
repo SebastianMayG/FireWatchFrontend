@@ -54,7 +54,13 @@ export function areaInterpretation(args: {
   if (d.activity <= 0 && d.detections === 0) {
     parts.push(t('pdf.interp.noActivity', { year: d.year }))
   } else {
-    parts.push(t('pdf.interp.detections', { year: d.year, n: number.format(d.detections) }))
+    parts.push(
+      t('pdf.interp.detections', {
+        year: d.year,
+        n: number.format(d.activity),
+        points: number.format(d.detections),
+      }),
+    )
     const v = d.vs_median_pct
     if (v !== null) {
       const key = Math.abs(v) < NEAR_PCT ? 'near' : v > 0 ? 'above' : 'below'
