@@ -10,10 +10,12 @@ const router = createRouter({
       path: '/compare',
       name: 'compare',
       component: () => import('@/views/CompareView.vue'),
-      // Compare necesita un área seleccionada (p. ej. al entrar por URL o recargar, no hay)
+
       beforeEnter: () => (useAnalysisStore().bbox ? true : { name: 'dashboard' }),
     },
     { path: '/about', name: 'about', component: () => import('@/views/AboutView.vue') },
+
+    { path: '/:pathMatch(.*)*', redirect: { name: 'dashboard' } },
   ],
 })
 
