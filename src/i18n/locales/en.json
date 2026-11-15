@@ -1,5 +1,7 @@
 {
-  "app": { "name": "FireWatch" },
+  "app": {
+    "name": "FireWatch"
+  },
   "header": {
     "dashboard": "Dashboard",
     "about": "About the project",
@@ -19,7 +21,15 @@
     "cancelSelection": "Cancel",
     "clearSelection": "Clear selected area",
     "mainPeriod": "Main period",
-    "comparePeriod": "Comparison period"
+    "comparePeriod": "Comparison period",
+    "loadingHotspots": "Loading hotspots...",
+    "detectionsInView": "{n} detections in view",
+    "recurrentZoneYears": "Fire activity in {n} of {total} years",
+    "legend": {
+      "recurrent": "Recurrent zone",
+      "density": "Hotspot density",
+      "points": "Hotspot (size and color = fire intensity)"
+    }
   },
   "indicators": {
     "hotspots": "Hotspots detected",
@@ -27,7 +37,22 @@
     "peakMonths": "Months with highest activity",
     "vsMedian": "Change vs. historical median",
     "vsOther": "Change vs. other period",
-    "yearsAnalyzed": "Years analyzed"
+    "yearsAnalyzed": "Years analyzed",
+    "partialNote": "Partial year: records start in November 2000.",
+    "activityHint": "Harmonized activity: {value}",
+    "vsMedianPeriod": "Change vs. median {from}-{to}",
+    "vsOtherYear": "Change vs. {year}",
+    "peakYearOfTwo": "Year with highest activity (of the two)",
+    "detailVs": "{value} vs. {ref}",
+    "activityUnit": "Harmonized activity: fire cell-days on a 1 km grid, comparable across years.",
+    "scope": "Data for: {area}",
+    "scopeArea": "selected area",
+    "scopeMexico": "all of Mexico (select an area on the map to narrow it down)",
+    "lowData": "Few detections in this area (fewer than {n} in at least one of the years): treat this comparison with caution.",
+    "basis": {
+      "modis_cell_days": "One of the years is before 2012 (MODIS only), so both years are compared by fire days detected by MODIS, without calibration.",
+      "terra_cell_days": "One of the years is 2000-2002 (only the Terra satellite was active), so both years are compared by fire days detected by Terra, without calibration."
+    }
   },
   "charts": {
     "calendar": "Historical calendar",
@@ -35,10 +60,21 @@
     "trend": "Annual trend",
     "trendHint": "Yearly evolution, intensity comparison and historical peaks.",
     "emptyArea": "Select an area on the map to see this analysis.",
-    "pending": "The analysis for the selected area will appear here."
+    "pending": "The analysis for the selected area will appear here.",
+    "activity": "Harmonized activity",
+    "detections": "Raw detections",
+    "median": "Historical median",
+    "selected": "Selected year",
+    "peak": "Peak",
+    "selectAreaToSee": "Select an area on the map to see its monthly activity for every year.",
+    "selectAreaToSeeTrend": "Select an area on the map to see its year-by-year evolution.",
+    "selectAreaInDashboard": "Select an area in the main dashboard to see its historical calendar here.",
+    "goToDashboard": "Go to dashboard"
   },
   "common": {
-    "noData": "—"
+    "noData": "—",
+    "retry": "Retry",
+    "loading": "Loading..."
   },
   "about": {
     "title": "About the project",
@@ -74,5 +110,9 @@
       "title": "Acknowledgement",
       "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
     }
+  },
+  "errors": {
+    "backend": "Could not connect to the FireWatch server ({url}). Make sure the backend is running.",
+    "request": "Could not load this data: {error}"
   }
 }

@@ -1,42 +1,59 @@
-# .
+# FireWatch Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplicación web (Vue 3 + TypeScript + PrimeVue + Tailwind + MapLibre + ECharts) para analizar la actividad histórica de puntos calientes en México con datos armonizados de MODIS y VIIRS (NASA FIRMS). Proyecto del NASA Space Apps Challenge.
 
-## Recommended IDE Setup
+Consume la API de `FireWatchBackend` (FastAPI). Contrato: `FireWatchBackend/docs/api.md`.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Requisitos
 
-## Recommended Browser Setup
+- Node `^22.18.0` o `>=24.12.0`
+- El backend corriendo (por defecto en http://127.0.0.1:8000)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Configuración
 
-## Type Support for `.vue` Imports in TS
+Si el backend corre en otra URL, copia `.env.example` a `.env` y ajusta:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+```
+VITE_API_URL=http://127.0.0.1:8000
+```
 
-## Customize configuration
+El backend debe permitir el origen del frontend en CORS (`CORS_ORIGINS`; por defecto acepta http://localhost:5173).
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Desarrollo
 
 ```sh
 npm install
-```
 
-### Compile and Hot-Reload for Development
+# Terminal 1: backend
+cd ../FireWatchBackend
+..venvScriptsActivate.ps1
+uvicorn app.main:app --reload
 
-```sh
+# Terminal 2: frontend
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Abre http://localhost:5173.
 
-```sh
-npm run build
+## Scripts
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo con recarga |
+| `npm run type-check` | Revisión de tipos (vue-tsc) |
+| `npm run build` | Revisión de tipos + build de producción en `dist/` |
+| `npm run format` | Formato con Prettier |
+
+## Estructura
+
+```
+src/
+  api/          cliente HTTP y tipos de la API
+  stores/       estado (Pinia): año, área, datos del backend
+  components/
+    map/        mapa (puntos, heatmap, zonas recurrentes, selección de área) y controles
+    indicators/ cards de indicadores
+    charts/     calendario (heatmap) y tendencia (ECharts)
+  views/        Dashboard, Compare, About
+  i18n/         textos ES/EN
 ```

@@ -44,8 +44,16 @@
         <i class="pi pi-clone" />
         <span class="hidden sm:inline">{{ t('map.compare') }}</span>
       </Button>
-      <!-- TODO(backend): abrir /export/csv?year=&bbox= -->
-      <Button size="small" severity="secondary" :aria-label="t('map.csv')" disabled>
+      <!-- Descarga directa del backend: año seleccionado y área (sin área = México completo) -->
+      <Button
+        as="a"
+        :href="csvHref"
+        download
+        size="small"
+        severity="secondary"
+        :aria-label="t('map.csv')"
+        :disabled="!store.ready"
+      >
         <i class="pi pi-download" />
         <span class="hidden sm:inline">{{ t('map.csv') }}</span>
       </Button>
@@ -59,15 +67,19 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Button from 'primevue/button'
 import Select from 'primevue/select'
 import vTooltip from 'primevue/tooltip'
 import { useAnalysisStore } from '@/stores/analysis'
+import { csvUrl } from '@/api/client'
 
 defineProps<{ hideActions?: boolean }>()
 const year = defineModel<number>({ required: true })
 
 const { t } = useI18n()
 const store = useAnalysisStore()
+
+const csvHref = computed(() => csvUrl(year.value, store.bbox))
 </script>

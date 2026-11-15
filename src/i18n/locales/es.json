@@ -1,5 +1,7 @@
 {
-  "app": { "name": "FireWatch" },
+  "app": {
+    "name": "FireWatch"
+  },
   "header": {
     "dashboard": "Panel",
     "about": "Acerca del proyecto",
@@ -19,7 +21,15 @@
     "cancelSelection": "Cancelar",
     "clearSelection": "Borrar área seleccionada",
     "mainPeriod": "Periodo principal",
-    "comparePeriod": "Periodo a comparar"
+    "comparePeriod": "Periodo a comparar",
+    "loadingHotspots": "Cargando puntos calientes...",
+    "detectionsInView": "{n} detecciones en la vista",
+    "recurrentZoneYears": "Actividad de fuego en {n} de {total} años",
+    "legend": {
+      "recurrent": "Zona recurrente",
+      "density": "Densidad de puntos calientes",
+      "points": "Punto caliente (tamaño y color = intensidad del fuego)"
+    }
   },
   "indicators": {
     "hotspots": "Puntos calientes detectados",
@@ -27,7 +37,22 @@
     "peakMonths": "Meses con mayor actividad",
     "vsMedian": "Cambio vs. mediana histórica",
     "vsOther": "Cambio vs. el otro periodo",
-    "yearsAnalyzed": "Años analizados"
+    "yearsAnalyzed": "Años analizados",
+    "partialNote": "Año parcial: los registros empiezan en noviembre de 2000.",
+    "activityHint": "Actividad armonizada: {value}",
+    "vsMedianPeriod": "Cambio vs. mediana {from}-{to}",
+    "vsOtherYear": "Cambio vs. {year}",
+    "peakYearOfTwo": "Año con mayor actividad (de los dos)",
+    "detailVs": "{value} vs. {ref}",
+    "activityUnit": "Actividad armonizada: días-celda con fuego en una rejilla de 1 km, comparable entre años.",
+    "scope": "Datos de: {area}",
+    "scopeArea": "área seleccionada",
+    "scopeMexico": "todo México (selecciona un área en el mapa para acotarlo)",
+    "lowData": "Hay pocas detecciones en esta área (menos de {n} en al menos uno de los años): toma esta comparación con cautela.",
+    "basis": {
+      "modis_cell_days": "Uno de los años es anterior a 2012 (solo MODIS), así que ambos años se comparan por días con fuego detectados por MODIS, sin calibración.",
+      "terra_cell_days": "Uno de los años es de 2000-2002 (solo existía el satélite Terra), así que ambos años se comparan por días con fuego detectados por Terra, sin calibración."
+    }
   },
   "charts": {
     "calendar": "Calendario histórico",
@@ -35,10 +60,21 @@
     "trend": "Tendencia anual",
     "trendHint": "Evolución por año, comparación de intensidad y picos históricos.",
     "emptyArea": "Selecciona un área en el mapa para ver este análisis.",
-    "pending": "Aquí aparecerá el análisis del área seleccionada."
+    "pending": "Aquí aparecerá el análisis del área seleccionada.",
+    "activity": "Actividad armonizada",
+    "detections": "Detecciones crudas",
+    "median": "Mediana histórica",
+    "selected": "Año seleccionado",
+    "peak": "Pico",
+    "selectAreaToSee": "Selecciona un área en el mapa para ver su actividad mensual de todos los años.",
+    "selectAreaToSeeTrend": "Selecciona un área en el mapa para ver su evolución año con año.",
+    "selectAreaInDashboard": "Selecciona un área en el panel principal para ver aquí su calendario histórico.",
+    "goToDashboard": "Ir al panel"
   },
   "common": {
-    "noData": "—"
+    "noData": "—",
+    "retry": "Reintentar",
+    "loading": "Cargando..."
   },
   "about": {
     "title": "Acerca del proyecto",
@@ -74,5 +110,9 @@
       "title": "Reconocimiento",
       "body": "We acknowledge the use of data and/or imagery from NASA's Fire Information for Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of NASA's Land, Atmosphere Near real-time Capability for EO (LANCE) and NASA's Earth Science Data and Information System (ESDIS)."
     }
+  },
+  "errors": {
+    "backend": "No se pudo conectar con el servidor de FireWatch ({url}). Verifica que el backend esté corriendo.",
+    "request": "No se pudieron cargar estos datos: {error}"
   }
 }
