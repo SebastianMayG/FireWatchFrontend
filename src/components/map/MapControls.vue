@@ -34,34 +34,58 @@
       >
         <i class="pi pi-eraser" />
       </Button>
-      <Button
-        as="router-link"
-        to="/compare"
-        size="small"
-        severity="secondary"
-        :aria-label="t('map.compare')"
-      >
-        <i class="pi pi-clone" />
-        <span class="hidden sm:inline">{{ t('map.compare') }}</span>
-      </Button>
-      <!-- Descarga directa del backend: año seleccionado y área (sin área = México completo) -->
-      <Button
-        as="a"
-        :href="csvHref"
-        download
-        size="small"
-        severity="secondary"
-        :aria-label="t('map.csv')"
-        :disabled="!store.ready"
-      >
-        <i class="pi pi-download" />
-        <span class="hidden sm:inline">{{ t('map.csv') }}</span>
-      </Button>
-      <!-- TODO: generar PDF con jspdf + html-to-image -->
-      <Button size="small" severity="secondary" :aria-label="t('map.pdf')" disabled>
-        <i class="pi pi-file-pdf" />
-        <span class="hidden sm:inline">{{ t('map.pdf') }}</span>
-      </Button>
+
+      <!-- Compare, CSV y PDF requieren un área. El <span> lleva el tooltip porque
+           un botón deshabilitado no recibe eventos del mouse. -->
+      <span v-tooltip.bottom="needAreaTip">
+        <Button
+          v-if="hasArea"
+          as="router-link"
+          to="/compare"
+          size="small"
+          severity="secondary"
+          :aria-label="t('map.compare')"
+        >
+          <i class="pi pi-clone" />
+          <span class="hidden sm:inline">{{ t('map.compare') }}</span>
+        </Button>
+        <Button v-else size="small" severity="secondary" :aria-label="t('map.compare')" disabled>
+          <i class="pi pi-clone" />
+          <span class="hidden sm:inline">{{ t('map.compare') }}</span>
+        </Button>
+      </span>
+
+      <span v-tooltip.bottom="needAreaTip">
+        <Button
+          v-if="hasArea"
+          as="a"
+          :href="csvHref"
+          download
+          size="small"
+          severity="secondary"
+          :aria-label="t('map.csv')"
+        >
+          <i class="pi pi-download" />
+          <span class="hidden sm:inline">{{ t('map.csv') }}</span>
+        </Button>
+        <Button v-else size="small" severity="secondary" :aria-label="t('map.csv')" disabled>
+          <i class="pi pi-download" />
+          <span class="hidden sm:inline">{{ t('map.csv') }}</span>
+        </Button>
+      </span>
+
+      <span v-tooltip.bottom="needAreaTip">
+        <Button
+          size="small"
+          severity="secondary"
+          :aria-label="t('map.pdf')"
+          :disabled="!hasArea || !pdfReady || pdfLoading"
+          @click="emit('pdf')"
+        >
+          <i :class="['pi', pdfLoading ? 'pi-spin pi-spinner' : 'pi-file-pdf']" />
+          <span class="hidden sm:inline">{{ t('map.pdf') }}</span>
+        </Button>
+      </span>
     </template>
   </div>
 </template>
@@ -75,11 +99,21 @@ import vTooltip from 'primevue/tooltip'
 import { useAnalysisStore } from '@/stores/analysis'
 import { csvUrl } from '@/api/client'
 
-defineProps<{ hideActions?: boolean }>()
+defineProps<{
+  hideActions?: boolean
+  /** Hay datos suficientes para el PDF (indicadores, calendario y tendencia cargados) */
+  pdfReady?: boolean
+  /** El PDF se está generando */
+  pdfLoading?: boolean
+}>()
+const emit = defineEmits<{ pdf: [] }>()
 const year = defineModel<number>({ required: true })
 
 const { t } = useI18n()
 const store = useAnalysisStore()
 
+const hasArea = computed(() => store.ready && store.bbox !== null)
+// Sin área: tooltip explicando por qué están deshabilitados. Con área: sin tooltip.
+const needAreaTip = computed(() => (hasArea.value ? undefined : t('map.needArea')))
 const csvHref = computed(() => csvUrl(year.value, store.bbox))
 </script>

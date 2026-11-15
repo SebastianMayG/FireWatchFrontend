@@ -46,15 +46,13 @@ export interface Indicators {
   partial: boolean
 }
 
-/** Métrica común para comparar dos años sin que el factor de calibración decida el resultado */
-export type CompareMetric = 'activity' | 'modis_cell_days' | 'terra_cell_days'
-
 export interface Compare {
   a: Indicators
   b: Indicators
   /** Usar esto para "año mayor de los dos" y "% vs. el otro año" */
   basis: {
-    metric: CompareMetric
+    /** Siempre 'activity': los dos años se comparan con la actividad armonizada */
+    metric: 'activity'
     a: number
     b: number
     pct_b_vs_a: number | null

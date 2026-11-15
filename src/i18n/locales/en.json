@@ -29,7 +29,8 @@
       "recurrent": "Recurrent zone",
       "density": "Hotspot density",
       "points": "Hotspot (size and color = fire intensity)"
-    }
+    },
+    "needArea": "Select an area on the map first"
   },
   "indicators": {
     "hotspots": "Hotspots detected",
@@ -48,11 +49,7 @@
     "scope": "Data for: {area}",
     "scopeArea": "selected area",
     "scopeMexico": "all of Mexico (select an area on the map to narrow it down)",
-    "lowData": "Few detections in this area (fewer than {n} in at least one of the years): treat this comparison with caution.",
-    "basis": {
-      "modis_cell_days": "One of the years is before 2012 (MODIS only), so both years are compared by fire days detected by MODIS, without calibration.",
-      "terra_cell_days": "One of the years is 2000-2002 (only the Terra satellite was active), so both years are compared by fire days detected by Terra, without calibration."
-    }
+    "lowData": "Few detections in this area (fewer than {n} in at least one of the years): treat this comparison with caution."
   },
   "charts": {
     "calendar": "Historical calendar",
@@ -114,5 +111,49 @@
   "errors": {
     "backend": "Could not connect to the FireWatch server ({url}). Make sure the backend is running.",
     "request": "Could not load this data: {error}"
+  },
+  "pdf": {
+    "download": "Download PDF",
+    "generating": "Generating PDF...",
+    "error": "Could not generate the PDF: {error}",
+    "titleArea": "Wildfire hotspot report",
+    "titleCompare": "Wildfire hotspot comparison report",
+    "generated": "Generated on {date}",
+    "summary": "Summary",
+    "region": "Region (coordinates)",
+    "period": "Period",
+    "activity": "Harmonized activity",
+    "map": "Analyzed area",
+    "maps": "Analyzed area in each year",
+    "interpretation": "Interpretation",
+    "comparison": "Comparison",
+    "methodology": "Methodology",
+    "methodologyText": "Fire activity is measured as fire cell-days on a 1 km grid, combining MODIS and VIIRS S-NPP detections from NASA FIRMS. Years 2000-2011 are harmonized by calibration from MODIS because VIIRS did not exist yet. \"Hotspots detected\" are raw detections from all sensors. Recurrent zones are ~5.6 km areas with fire in at least 15 of the 25 years 2001-2025.",
+    "legendNote": "Map legend: blue rectangle = analyzed area; purple = recurrent wildfire zones; yellow to red = hotspots (color and size = fire intensity).",
+    "attribution": "Data source",
+    "page": "Page {n} of {total}",
+    "interp": {
+      "noActivity": "No fire activity was recorded in the selected area in {year}.",
+      "detections": "In {year}, the selected area recorded {n} hotspot detections.",
+      "above": "Its fire activity was {pct}% higher than the historical median ({from}-{to}).",
+      "below": "Its fire activity was {pct}% lower than the historical median ({from}-{to}).",
+      "near": "Its fire activity was close to the historical median ({from}-{to}).",
+      "months": "The most critical months were {months}.",
+      "peakSame": "{year} is the year with the highest activity in the whole record.",
+      "peakOther": "The year with the highest activity in the record is {peak}.",
+      "trendUp": "In the last five years ({from}-{to}) activity was {pct}% higher than in the previous five years.",
+      "trendDown": "In the last five years ({from}-{to}) activity was {pct}% lower than in the previous five years.",
+      "trendStable": "In the last five years ({from}-{to}) activity was similar to the previous five years.",
+      "partial": "Note: {year} is a partial year (records start in November 2000).",
+      "cmpMore": "In the selected area, {more} had more fire activity than {less} ({pct}% more).",
+      "cmpEqual": "Both years had the same fire activity in the selected area.",
+      "cmpNone": "Neither year recorded fire activity in the selected area.",
+      "cmpMedianAbove": "{year} was {pct}% above the historical median.",
+      "cmpMedianBelow": "{year} was {pct}% below the historical median.",
+      "cmpMedianNear": "{year} was close to the historical median.",
+      "cmpMonthsSame": "In both years the most critical month was {month}.",
+      "cmpMonthsDiff": "The most critical month was {a} in {yearA} and {b} in {yearB}."
+    },
+    "westAbbr": "W"
   }
 }

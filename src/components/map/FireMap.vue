@@ -72,6 +72,7 @@ import { useTheme } from '@/composables/useTheme'
 import { useAnalysisStore, type BBox } from '@/stores/analysis'
 import { api, isAbort } from '@/api/client'
 import type { HotspotsResponse, RecurrentZoneProps } from '@/api/types'
+import type { MapImage } from '@/pdf/types'
 
 // Vite pre-empaqueta maplibre-gl y el worker no queda junto a él (404).
 // Con ?url Vite sirve el worker en dev y lo copia a dist/ en el build.
@@ -239,6 +240,49 @@ function scheduleRefresh() {
   clearTimeout(moveTimer)
   moveTimer = setTimeout(refreshHotspots, MOVE_DEBOUNCE_MS)
 }
+
+// ---------- Captura para el PDF ----------
+
+function waitIdle(): Promise<void> {
+  return new Promise((resolve) => {
+    if (!map) return resolve()
+    map.once('idle', () => resolve())
+    map.triggerRepaint()
+  })
+}
+
+/**
+ * Imagen del mapa centrado en el área seleccionada, con sus capas (área, puntos, zonas).
+ * Funciona porque el mapa se crea con preserveDrawingBuffer: true.
+ */
+async function capture(): Promise<MapImage | null> {
+  if (!map) return null
+  onZoneLeave()
+  if (store.bbox) {
+    const [w, s, e, n] = store.bbox
+    map.fitBounds(
+      [
+        [w, s],
+        [e, n],
+      ],
+      { padding: 32, animate: false },
+    )
+  }
+  // Pedir los puntos de la vista final sin esperar el debounce y dejar que el mapa termine de dibujar
+  clearTimeout(moveTimer)
+  await waitIdle()
+  await refreshHotspots()
+  await waitIdle()
+  const canvas = map.getCanvas()
+  // JPEG: el PDF pesa mucho menos que con PNG y el mapa no tiene transparencias
+  return {
+    dataUrl: canvas.toDataURL('image/jpeg', 0.92),
+    width: canvas.width,
+    height: canvas.height,
+  }
+}
+
+defineExpose({ capture })
 
 // ---------- Capas ----------
 

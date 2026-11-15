@@ -60,9 +60,6 @@
       <Message v-if="lowData" severity="warn" size="small" icon="pi pi-exclamation-triangle">
         {{ lowData }}
       </Message>
-      <p v-if="basisNote" class="text-xs text-surface-500 dark:text-surface-400">
-        <i class="pi pi-info-circle mr-1 text-[10px]" />{{ basisNote }}
-      </p>
       <p v-if="note" class="text-xs text-surface-500 dark:text-surface-400">
         <i class="pi pi-info-circle mr-1 text-[10px]" />{{ note }}
       </p>
@@ -92,10 +89,8 @@ const props = defineProps<{
   /** Compare: valor de este periodo y del otro en la métrica común (basis) */
   selfValue?: number | null
   otherValue?: number | null
-  /** Compare: % de cambio de este periodo respecto del otro (en la métrica común) */
+  /** Compare: % de cambio de este periodo respecto del otro (actividad armonizada) */
   otherPct?: number | null
-  /** Compare: explicación de la métrica común usada */
-  basisNote?: string | null
   /** Compare: pocas detecciones, comparación poco confiable */
   lowData?: string | null
 }>()
@@ -203,7 +198,7 @@ const items = computed<Item[]>(() => {
           icon: 'pi-sort-alt',
           value: formatPct(props.otherPct),
           tone: tone(props.otherPct),
-          title: props.basisNote ?? t('indicators.activityUnit'),
+          title: t('indicators.activityUnit'),
           detail:
             props.selfValue !== null && props.selfValue !== undefined
               ? detailVs(props.selfValue, props.otherValue)

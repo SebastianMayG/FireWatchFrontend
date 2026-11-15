@@ -29,7 +29,8 @@
       "recurrent": "Zona recurrente",
       "density": "Densidad de puntos calientes",
       "points": "Punto caliente (tamaño y color = intensidad del fuego)"
-    }
+    },
+    "needArea": "Primero selecciona un área en el mapa"
   },
   "indicators": {
     "hotspots": "Puntos calientes detectados",
@@ -48,11 +49,7 @@
     "scope": "Datos de: {area}",
     "scopeArea": "área seleccionada",
     "scopeMexico": "todo México (selecciona un área en el mapa para acotarlo)",
-    "lowData": "Hay pocas detecciones en esta área (menos de {n} en al menos uno de los años): toma esta comparación con cautela.",
-    "basis": {
-      "modis_cell_days": "Uno de los años es anterior a 2012 (solo MODIS), así que ambos años se comparan por días con fuego detectados por MODIS, sin calibración.",
-      "terra_cell_days": "Uno de los años es de 2000-2002 (solo existía el satélite Terra), así que ambos años se comparan por días con fuego detectados por Terra, sin calibración."
-    }
+    "lowData": "Hay pocas detecciones en esta área (menos de {n} en al menos uno de los años): toma esta comparación con cautela."
   },
   "charts": {
     "calendar": "Calendario histórico",
@@ -114,5 +111,49 @@
   "errors": {
     "backend": "No se pudo conectar con el servidor de FireWatch ({url}). Verifica que el backend esté corriendo.",
     "request": "No se pudieron cargar estos datos: {error}"
+  },
+  "pdf": {
+    "download": "Descargar PDF",
+    "generating": "Generando PDF...",
+    "error": "No se pudo generar el PDF: {error}",
+    "titleArea": "Reporte de puntos calientes",
+    "titleCompare": "Reporte comparativo de puntos calientes",
+    "generated": "Generado el {date}",
+    "summary": "Resumen",
+    "region": "Región (coordenadas)",
+    "period": "Periodo",
+    "activity": "Actividad armonizada",
+    "map": "Área analizada",
+    "maps": "Área analizada en cada año",
+    "interpretation": "Interpretación",
+    "comparison": "Comparación",
+    "methodology": "Metodología",
+    "methodologyText": "La actividad de fuego se mide en días-celda con fuego en una rejilla de 1 km, combinando las detecciones de MODIS y VIIRS S-NPP de NASA FIRMS. Los años 2000-2011 se armonizan por calibración a partir de MODIS, porque VIIRS aún no existía. Los \"puntos calientes detectados\" son las detecciones crudas de todos los sensores. Las zonas recurrentes son áreas de ~5.6 km con fuego en al menos 15 de los 25 años 2001-2025.",
+    "legendNote": "Leyenda del mapa: rectángulo azul = área analizada; morado = zonas de incendios recurrentes; amarillo a rojo = puntos calientes (color y tamaño = intensidad del fuego).",
+    "attribution": "Fuente de datos",
+    "page": "Página {n} de {total}",
+    "interp": {
+      "noActivity": "No se registró actividad de fuego en el área seleccionada en {year}.",
+      "detections": "En {year}, el área seleccionada registró {n} detecciones de puntos calientes.",
+      "above": "Su actividad de fuego fue {pct}% mayor que la mediana histórica ({from}-{to}).",
+      "below": "Su actividad de fuego fue {pct}% menor que la mediana histórica ({from}-{to}).",
+      "near": "Su actividad de fuego fue similar a la mediana histórica ({from}-{to}).",
+      "months": "Los meses más críticos fueron {months}.",
+      "peakSame": "{year} es el año con mayor actividad de todo el registro.",
+      "peakOther": "El año con mayor actividad del registro es {peak}.",
+      "trendUp": "En los últimos cinco años ({from}-{to}) la actividad fue {pct}% mayor que en los cinco años anteriores.",
+      "trendDown": "En los últimos cinco años ({from}-{to}) la actividad fue {pct}% menor que en los cinco años anteriores.",
+      "trendStable": "En los últimos cinco años ({from}-{to}) la actividad fue similar a la de los cinco años anteriores.",
+      "partial": "Nota: {year} es un año parcial (los registros empiezan en noviembre de 2000).",
+      "cmpMore": "En el área seleccionada, {more} tuvo más actividad de fuego que {less} ({pct}% más).",
+      "cmpEqual": "Ambos años tuvieron la misma actividad de fuego en el área seleccionada.",
+      "cmpNone": "Ninguno de los dos años registró actividad de fuego en el área seleccionada.",
+      "cmpMedianAbove": "{year} estuvo {pct}% por encima de la mediana histórica.",
+      "cmpMedianBelow": "{year} estuvo {pct}% por debajo de la mediana histórica.",
+      "cmpMedianNear": "{year} estuvo cerca de la mediana histórica.",
+      "cmpMonthsSame": "En ambos años el mes más crítico fue {month}.",
+      "cmpMonthsDiff": "El mes más crítico fue {a} en {yearA} y {b} en {yearB}."
+    },
+    "westAbbr": "O"
   }
 }
